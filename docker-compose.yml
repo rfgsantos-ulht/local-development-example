@@ -1,0 +1,54 @@
+services:
+  nginx:
+    image: dummy-gateway:latest
+    build: ./gateway
+    container_name: gateway
+    volumes:
+      - /Users/santorui/Desktop/Lusofona/TFC/local-development-example/gateway/multimedia:/etc/nginx/multimedia
+    ports:
+      - "80:80"
+    networks:
+      - gateway-network
+    depends_on:
+      - mywebsite
+  
+  mywebsite:
+    image: mywebsite:latest
+    build:
+      context: ./sample-django
+      args:
+        APP_PORT: 8000
+    container_name: mywebsite
+    env_file:
+      - ./sample-django/.env
+    environment:
+      - DATABASE_HOST=db
+    networks:
+      - database-network
+      - gateway-network
+    volumes:
+      - /Users/santorui/Desktop/Lusofona/TFC/local-development-example/gateway/multimedia/djangoapp/static/:/data/static
+      - /Users/santorui/Desktop/Lusofona/TFC/local-development-example/gateway/multimedia/djangoapp/media/:/data/media
+    expose:
+      - 8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: mywebsite_db
+    env_file:
+      - ./sample-django/.db.env
+    networks:
+      - database-network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+
+networks:
+  database-network:
+    driver: bridge
+  gateway-network:
+    external: true
