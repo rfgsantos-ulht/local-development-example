@@ -1,0 +1,43 @@
+services:
+ 
+  <YOUR-APP-ID>-<BACKEND/FRONTEND>:
+    image: <YOUR-APP-IMAGE-NAME>:latest
+    build:
+      context: ./<YOUR-APP-FOLDER>
+      args:
+        APP_PORT: 8000
+    container_name: <YOUR-APP-CONTAINER-ID>
+    env_file:
+      - ./<YOUR-APP-FOLDER>/.env
+    environment:
+      - <ENV-1>
+      - <ENV-2>
+    networks:
+      - <YOUR-APP-DATABASE-NETWORK>
+      - gateway-network
+    volumes:
+      - <VOLUME 1>
+      - <VOLUME 2>
+    expose:
+      - <YOUR-APP-PORT>
+    depends_on:
+      - <YOUR-APP-ID>-<YOUR-DATABASE-CONTAINER>
+
+  <YOUR-APP-ID>-<YOUR-DATABASE-CONTAINER>:
+    image: postgres:latest # example
+    container_name: <YOUR-APP-DATABASE-CONTAINER-ID>
+    env_file:
+      - ./<YOUR-APP-FOLDER>/.db.env
+    networks:
+      - <YOUR-APP-DATABASE-NETWORK>-<YOUR-APP-ID>
+    volumes:
+      - <YOUR-APP-DATABASE-VOLUME>-<YOUR-APP-ID>:/var/lib/postgresql/data
+
+volumes:
+  <YOUR-APP-DATABASE-VOLUME>-<YOUR-APP-ID>:
+
+networks:
+  <YOUR-APP-DATABASE-NETWORK>-<YOUR-APP-ID>:
+    driver: bridge
+  gateway-network:
+    external: true

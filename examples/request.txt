@@ -1,0 +1,9 @@
+Application identifier: <APP ID>
+Number of public containers:
+    Example 1: Frontend /<APP-ID>-frontend
+               Backend /<APP-ID>-backend
+            
+    Example 2: Backend /<APP-ID>
+Name Webhook: https://projects.deisi.ulusofona.pt/jenkins/<YOUR-WEBHOOK-NAME>
+Github url: <your-github-url>
+Github branch: <your-github-branch> 
