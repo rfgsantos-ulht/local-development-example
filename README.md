@@ -76,10 +76,10 @@ The server is currently placing automations of deployment based in your Github r
 To proceed with application deployment automation, you must follow the process:
 
 * Github repository is publicly available
-* A webhook is configured - https://projects.deisi.ulusofona.pt/<YOUR-APP-ID>. To configure your webhook:
+* A webhook is configured - https://projects.deisi.ulusofona.pt/YOUR-APP-ID. To configure your webhook:
     * Go to your repository Settings -> Webhooks
     * Add Webhook
-    * Fill in the webhook url: https://projects.deisi.ulusofona.pt/<YOUR-APP-ID>
+    * Fill in the webhook url: https://projects.deisi.ulusofona.pt/YOUR-APP-ID
     * Set content type -> **application/json**
     * Tick the option -> Just the *push* event
 * Have a shell script in your repository with the necessary commands to run your docker-compose file.
