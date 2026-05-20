@@ -71,21 +71,18 @@ After successfully identifying any of the use cases matching your own, there are
 
 ## Automations
 
-The server is currently placing automations of deployment based in your Github repository. For this to be configured for your project, you must have all previous considerations tackled in your application development.
+The server is currently placing automations of deployment based in your Github repository. 
+For this to be configured for your project, you must have all previous considerations tackled in your application development.
 
-To proceed with application deployment automation, you must follow the process:
+The CI/CD pipeline is configured with the following steps:
 
-* Github repository is publicly available
-* A webhook is configured - https://projects.deisi.ulusofona.pt/YOUR-APP-ID. To configure your webhook:
-    * Go to your repository Settings -> Webhooks
-    * Add Webhook
-    * Fill in the webhook url: https://projects.deisi.ulusofona.pt/YOUR-APP-ID
-    * Set content type -> **application/json**
-    * Tick the option -> Just the *push* event
-* Have a shell script in your repository with the necessary commands to run your docker-compose file.
-    * there is an example file in [examples/run.example.sh](examples/run.example.sh)
-* Send and email to rui.filipe.santos@ulusofona.pt with the file [examples/request.txt](examples/request.txt) correctly filled
+- Instalation of a Github App developed by Lusofona
+- You configure the repository branch you wish to be listened to through a small app developed by Lusofona
+- Configure the namespace that is going into the path , for instance: https://projects.deisi.ulusofona.pt/<chosen-path>
+- After the deployment is triggered, it will search for a ```docker-compose.yml``` in the project root
+- Deploy will happen in the server soon! You will be able to view the logs of the containers for better debugging
 
+To access all of the resources above, you must send me an email with all information, but only after you verify that it is working locally. 
 
 
 ## Final 
