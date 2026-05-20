@@ -78,7 +78,7 @@ The CI/CD pipeline is configured with the following steps:
 
 - Instalation of a Github App developed by Lusofona
 - You configure the repository branch you wish to be listened to through a small app developed by Lusofona
-- Configure the namespace that is going into the path , for instance: https://projects.deisi.ulusofona.pt/<chosen-path>
+- Configure the namespace that is going into the path , for instance: https://projects.deisi.ulusofona.pt/mynamespace
 - After the deployment is triggered, it will search for a ```docker-compose.yml``` in the project root
 - Deploy will happen in the server soon! You will be able to view the logs of the containers for better debugging
 
