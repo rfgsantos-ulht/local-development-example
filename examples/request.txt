@@ -4,6 +4,6 @@ Number of public containers:
                Backend /<APP-ID>-backend
             
     Example 2: Backend /<APP-ID>
-Name Webhook: https://projects.deisi.ulusofona.pt/jenkins/<YOUR-WEBHOOK-NAME>
+
 Github url: <your-github-url>
 Github branch: <your-github-branch> 
